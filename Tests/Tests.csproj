@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ArbusTest\ArbusTest.csproj" />
+      <ProjectReference Include="..\ArbusLib\ArbusLib.csproj" />
     </ItemGroup>
 
 </Project>

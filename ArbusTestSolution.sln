@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArbusTest", "ArbusTest\ArbusTest.csproj", "{B24A909A-151D-4A63-9994-302FE4CC5977}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArbusLib", "ArbusLib\ArbusLib.csproj", "{B24A909A-151D-4A63-9994-302FE4CC5977}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{CB3027D3-3DC3-4320-ACF1-8B90A96780F5}"
 EndProject
