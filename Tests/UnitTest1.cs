@@ -96,7 +96,9 @@ public class UnitTest1
         var menu = new MenuMaster(list, onPage);
         var actual = menu.GetTotalPages();
 
-        var expected = 3;
+        var expected = list.Count % onPage == 0
+            ? list.Count / onPage
+            : list.Count / onPage + 1;;
         Assert.Equal(expected, actual);
     }
 
@@ -112,11 +114,12 @@ public class UnitTest1
             new("Эскимо", Category.Iceсream, 40)
         };
         var onPage = 3;
+        var page = 2;
 
         var master = new MenuMaster(list, onPage);
-        var actual = master.GetItemsCountFromPage(2);
+        var actual = master.GetItemsCountFromPage(page);
 
-        var expected = 2;
+        var expected = list.Count - onPage * (page - 1);
         Assert.Equal(expected, actual);
     }
 
