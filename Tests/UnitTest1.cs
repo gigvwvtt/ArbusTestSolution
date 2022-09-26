@@ -17,7 +17,7 @@ public class UnitTest1
         var expected = "Не указано название блюда";
         Assert.Equal(expected, exception.Message);
     }
-
+    
     [Fact]
     public void ItemsValidation_ShortName_Test()
     {

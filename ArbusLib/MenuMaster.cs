@@ -28,14 +28,14 @@ public class MenuMaster
     /// <param name="page">Значение от единицы</param>
     public int GetItemsCountFromPage(int page)
     {
-        if (page > GetTotalPages()) throw new Exception();
+        if (page > GetTotalPages() || page < 1) throw new Exception();
         return Menu[page - 1].Count(i => i != null);
     }
 
     /// <param name="page">Значение от единицы</param>
     public List<Item> GetItemsFromPage(int page)
     {
-        if (page > GetTotalPages()) throw new Exception();
+        if (page > GetTotalPages() || page < 1) throw new Exception();
         return Menu[page - 1].ToList();
     }
 
