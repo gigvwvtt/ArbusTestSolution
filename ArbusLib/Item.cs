@@ -25,8 +25,6 @@ public class Item : IValidatable
             throw new Exception("Не указано название блюда");
         if (Name.Length is < 2 or > 50)
             throw new Exception("Некорректное имя блюда");
-        if (Category == default)
-            throw new Exception("Не указана категория блюда");
         if (Price < 0)
             throw new Exception("Значение цены ниже нуля");
     }

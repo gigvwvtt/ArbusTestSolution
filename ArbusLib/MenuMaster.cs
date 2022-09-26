@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ArbusTest;
+﻿namespace ArbusTest;
 
 public class MenuMaster
 {
@@ -10,7 +8,7 @@ public class MenuMaster
     public MenuMaster(List<Item> items, int numberOfItemsOnPage)
     {
         var list = ItemsValidation(items);
-        
+
         if (list.Count > 0)
             FillPages(list, numberOfItemsOnPage);
         else
@@ -26,17 +24,19 @@ public class MenuMaster
     {
         return totalPages;
     }
-    
+
     /// <param name="page">Значение от единицы</param>
     public int GetItemsCountFromPage(int page)
     {
-        return Menu[page-1].Count(i => i != null);
+        if (page > GetTotalPages()) throw new Exception();
+        return Menu[page - 1].Count(i => i != null);
     }
-    
+
     /// <param name="page">Значение от единицы</param>
     public List<Item> GetItemsFromPage(int page)
     {
-        return Menu[page-1].ToList();
+        if (page > GetTotalPages()) throw new Exception();
+        return Menu[page - 1].ToList();
     }
 
     public List<Item> GetFirstItemsFromPages()
@@ -47,7 +47,7 @@ public class MenuMaster
 
     private void FillPages(List<Item> items, int numberOfItemsOnPage)
     {
-        totalPages = items.Count % 2 == 0
+        totalPages = items.Count % numberOfItemsOnPage == 0
             ? items.Count / numberOfItemsOnPage
             : items.Count / numberOfItemsOnPage + 1;
 
@@ -66,19 +66,20 @@ public class MenuMaster
 
     public static List<Item> ItemsValidation(List<Item> items)
     {
-         var list = new List<Item>();
-         
-         foreach (var item in items)
-         {
-             if (string.IsNullOrWhiteSpace(item.Name))
-                 throw new Exception("Не указано название блюда");
-             if (item.Name.Length is < 2 or > 50)
-                 throw new Exception("Некорректное имя блюда");
-             if (item.Price < 0)
-                 throw new Exception("Значение цены ниже нуля");
-             else
-                 list.Add(item);
-         }
-         return list;
+        var list = new List<Item>();
+
+        foreach (var item in items)
+        {
+            if (string.IsNullOrWhiteSpace(item.Name))
+                throw new Exception("Не указано название блюда");
+            if (item.Name.Length is < 2 or > 50)
+                throw new Exception("Некорректное имя блюда");
+            if (item.Price < 0)
+                throw new Exception("Значение цены ниже нуля");
+            else
+                list.Add(item);
+        }
+
+        return list;
     }
 }
