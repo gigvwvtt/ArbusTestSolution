@@ -3,11 +3,11 @@
 var onPage = 2;
 var items = new List<Item>
 {
-    new Item("Матча", Category.Alcohol, 2),
-    new Item("Латте", Category.HotDrink, 80),
-    new Item("Смузи", Category.ColdDrink, 90),
-    new Item("Джин", Category.Alcohol, 150),
-    new Item("Эскимо", Category.Iceсream, 40)
+    new Item("Матча", 2, Category.Alcohol),
+    new Item("Латте", 80, Category.HotDrink),
+    new Item("Смузи", 90, Category.ColdDrink),
+    new Item("Джин", 150, Category.Alcohol),
+    new Item("Эскимо", 40, Category.Iceсream)
 };
 
 

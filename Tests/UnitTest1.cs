@@ -9,7 +9,7 @@ public class UnitTest1
     {
         var list = new List<Item>()
         {
-            new Item("", Category.Alcohol, 2)
+            new Item("", 2, Category.Alcohol)
         };
         var test = () => MenuMaster.ItemsValidation(list);
 
@@ -23,7 +23,7 @@ public class UnitTest1
     {
         var list = new List<Item>()
         {
-            new Item("a", Category.Alcohol, 2)
+            new Item("a", 2, Category.Alcohol)
         };
         var test = () => MenuMaster.ItemsValidation(list);
 
@@ -37,7 +37,7 @@ public class UnitTest1
     {
         var list = new List<Item>()
         {
-            new Item("sddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", Category.Alcohol, 2)
+            new Item("sddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", 2, Category.Alcohol)
         };
         var test = () => MenuMaster.ItemsValidation(list);
 
@@ -51,7 +51,7 @@ public class UnitTest1
     {
         var list = new List<Item>()
         {
-            new Item("Матча", Category.Alcohol, -12)
+            new Item("Матча", -12, Category.Alcohol)
         };
         var test = () => MenuMaster.ItemsValidation(list);
 
@@ -65,11 +65,11 @@ public class UnitTest1
     {
         var list = new List<Item>()
         {
-            new("Матча", Category.Alcohol, 22),
-            new("Латте", Category.HotDrink, 80),
-            new("Смузи", Category.ColdDrink, 90),
-            new("Джин", Category.Alcohol, 150),
-            new("Эскимо", Category.Iceсream, 40)
+            new("Матча", 22, Category.Alcohol),
+            new("Латте", 80, Category.HotDrink),
+            new("Смузи", 90, Category.ColdDrink),
+            new("Джин", 150, Category.Alcohol),
+            new("Эскимо", 40, Category.Iceсream)
         };
         var onPage = 2;
 
@@ -85,11 +85,11 @@ public class UnitTest1
     {
         var list = new List<Item>()
         {
-            new("Матча", Category.Alcohol, 22),
-            new("Латте", Category.HotDrink, 80),
-            new("Смузи", Category.ColdDrink, 90),
-            new("Джин", Category.Alcohol, 150),
-            new("Эскимо", Category.Iceсream, 40)
+            new("Матча", 22, Category.Alcohol),
+            new("Латте", 80, Category.HotDrink),
+            new("Смузи", 90, Category.ColdDrink),
+            new("Джин", 150, Category.Alcohol),
+            new("Эскимо", 40, Category.Iceсream)
         };
         var onPage = 2;
 
@@ -107,11 +107,11 @@ public class UnitTest1
     {
         var list = new List<Item>()
         {
-            new("Матча", Category.Alcohol, 22),
-            new("Латте", Category.HotDrink, 80),
-            new("Смузи", Category.ColdDrink, 90),
-            new("Джин", Category.Alcohol, 150),
-            new("Эскимо", Category.Iceсream, 40)
+            new("Матча", 22, Category.Alcohol),
+            new("Латте", 80, Category.HotDrink),
+            new("Смузи", 90, Category.ColdDrink),
+            new("Джин", 150, Category.Alcohol),
+            new("Эскимо", 40, Category.Iceсream)
         };
         var onPage = 3;
         var page = 2;
@@ -128,13 +128,13 @@ public class UnitTest1
     {
         var list = new List<Item>()
         {
-            new("Матча", Category.Alcohol, 22),
-            new("Латте", Category.HotDrink, 80),
-            new("Смузи", Category.ColdDrink, 90),
-            new("Джин", Category.Alcohol, 150),
-            new("Тоник", Category.Alcohol, 150),
-            new("Американо", Category.Alcohol, 150),
-            new("Эскимо", Category.Iceсream, 40)
+            new("Матча",22, Category.Alcohol),
+            new("Латте", 80, Category.HotDrink),
+            new("Смузи", 90, Category.ColdDrink),
+            new("Джин", 150, Category.Alcohol),
+            new("Тоник", 150, Category.Alcohol),
+            new("Американо", 150, Category.Alcohol),
+            new("Эскимо", 40, Category.Iceсream)
         };
         var onPage = 2;
 
@@ -143,8 +143,8 @@ public class UnitTest1
 
         var expected = new List<Item>
         {
-            new("Тоник", Category.Alcohol, 150),
-            new("Американо", Category.Alcohol, 150)
+            new("Тоник", 150, Category.Alcohol),
+            new("Американо", 150, Category.Alcohol)
         };
         Assert.NotStrictEqual(expected, actual);
     }
@@ -154,13 +154,13 @@ public class UnitTest1
     {
         var list = new List<Item>()
         {
-            new("Матча", Category.Alcohol, 22),
-            new("Латте", Category.HotDrink, 80),
-            new("Смузи", Category.ColdDrink, 90),
-            new("Джин", Category.Alcohol, 150),
-            new("Тоник", Category.Alcohol, 150),
-            new("Американо", Category.Alcohol, 150),
-            new("Эскимо", Category.Iceсream, 40)
+            new("Матча", 22, Category.Alcohol),
+            new("Латте", 80, Category.HotDrink),
+            new("Смузи", 90, Category.ColdDrink),
+            new("Джин", 150, Category.Alcohol),
+            new("Тоник", 150, Category.Alcohol),
+            new("Американо", 150, Category.Alcohol),
+            new("Эскимо", 40, Category.Iceсream)
         };
         var onPage = 2;
 
@@ -169,10 +169,10 @@ public class UnitTest1
 
         var expected = new List<Item>
         {
-            new("Матча", Category.Alcohol, 22),
-            new("Смузи", Category.ColdDrink, 90),
-            new("Тоник", Category.Alcohol, 150),
-            new("Эскимо", Category.Iceсream, 40)
+            new("Матча", 22, Category.Alcohol),
+            new("Смузи", 90, Category.ColdDrink),
+            new("Тоник", 150, Category.Alcohol),
+            new("Эскимо", 40, Category.Iceсream)
         };
         Assert.NotStrictEqual(expected, actual);
     }
@@ -182,13 +182,13 @@ public class UnitTest1
     {
         var list = new List<Item>()
         {
-            new("Матча", Category.Alcohol, 22),
-            new("Латте", Category.HotDrink, 80),
-            new("Смузи", Category.ColdDrink, 90),
-            new("Джин", Category.Alcohol, 150),
-            new("Тоник", Category.Alcohol, 150),
-            new("Американо", Category.Alcohol, 150),
-            new("Эскимо", Category.Iceсream, 40)
+            new("Матча", 22, Category.Alcohol),
+            new("Латте", 80, Category.HotDrink),
+            new("Смузи", 90, Category.ColdDrink),
+            new("Джин", 150, Category.Alcohol),
+            new("Тоник", 150, Category.Alcohol),
+            new("Американо", 150, Category.Alcohol),
+            new("Эскимо", 40, Category.Iceсream)
         };
         var onPage = 2;
 
@@ -199,22 +199,22 @@ public class UnitTest1
         {
             new Item[]
             {
-                new("Матча", Category.Alcohol, 22),
-                new("Латте", Category.HotDrink, 80)
+                new("Матча", 22, Category.Alcohol),
+                new("Латте", 80, Category.HotDrink)
             },
             new Item[]
             {
-                new("Смузи", Category.ColdDrink, 90),
-                new("Джин", Category.Alcohol, 150),
+                new("Смузи", 90, Category.ColdDrink),
+                new("Джин", 150, Category.Alcohol)
             },
             new Item[]
             {
-                new("Тоник", Category.Alcohol, 150),
-                new("Американо", Category.Alcohol, 150)
+                new("Тоник", 150, Category.Alcohol),
+                new("Американо", 150, Category.Alcohol)
             },
             new Item[]
             {
-                new("Эскимо", Category.Iceсream, 40),
+                new("Эскимо", 40, Category.Iceсream),
                 null
             }
         };

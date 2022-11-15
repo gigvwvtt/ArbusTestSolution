@@ -3,8 +3,14 @@
 public class MenuMaster
 {
     public Item[][] Menu { get; private set; }
-    private int totalPages;
+    private int _totalPages;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="items">Список позиций в меню</param>
+    /// <param name="numberOfItemsOnPage">Количество позиций на каждой странице</param>
+    /// <exception cref="Exception"></exception>
     public MenuMaster(List<Item> items, int numberOfItemsOnPage)
     {
         var list = ItemsValidation(items);
@@ -12,55 +18,98 @@ public class MenuMaster
         if (list.Count > 0)
             FillPages(list, numberOfItemsOnPage);
         else
-            throw new Exception("В меню нет элементов");
+            throw new Exception("В меню нет элементов.");
     }
 
     public int GetItemsAmount()
     {
-        return Menu.SelectMany(x => x).Count(x => x != null);
+        try
+        {
+            return Menu.SelectMany(x => x).Count(x => x != null);
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Элементы отсутствуют.\r\n{ex.Message}");
+            return 0;
+        }
     }
 
     public int GetTotalPages()
     {
-        return totalPages;
+        return _totalPages;
     }
 
     /// <param name="page">Значение от единицы</param>
     public int GetItemsCountFromPage(int page)
     {
-        if (page > GetTotalPages() || page < 1) throw new Exception();
-        return Menu[page - 1].Count(i => i != null);
+        try
+        {
+            PageCheck(page);
+            return Menu[page - 1].Count(i => i != null);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return 0;
+        }
     }
 
     /// <param name="page">Значение от единицы</param>
     public List<Item> GetItemsFromPage(int page)
     {
-        if (page > GetTotalPages() || page < 1) throw new Exception();
-        return Menu[page - 1].ToList();
+        try
+        {
+            PageCheck(page);
+            return Menu[page - 1].ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return new List<Item>();
+        }
+            
     }
 
     public List<Item> GetFirstItemsFromPages()
     {
-        var a = Menu.Select(x => x.First());
-        return Menu.Select(x => x.First()).ToList();
+        try
+        {
+            return Menu.Select(x => x.First()).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return new List<Item>();
+        }
     }
 
     private void FillPages(List<Item> items, int numberOfItemsOnPage)
     {
-        totalPages = items.Count % numberOfItemsOnPage == 0
-            ? items.Count / numberOfItemsOnPage
-            : items.Count / numberOfItemsOnPage + 1;
+        if (numberOfItemsOnPage <= 0)
+            throw new Exception("Неправильно указано количество позиций на каждой странице");
+        
+        _totalPages = items.Count % numberOfItemsOnPage == 0
+                    ? items.Count / numberOfItemsOnPage
+                    : items.Count / numberOfItemsOnPage + 1;
 
-        Menu = new Item[totalPages][];
+        Menu = new Item[_totalPages][];
 
-        for (var j = 0; j < Menu.Length; j++)
+        try
         {
-            Menu[j] = new Item[numberOfItemsOnPage];
-            for (var k = 0; k < Menu[j].Length; k++)
+            for (var j = 0; j < Menu.Length; j++)
             {
-                var index = (Menu[j].Length * j) + k;
-                Menu[j][k] = index < items.Count ? items[index] : null;
+                Menu[j] = new Item[numberOfItemsOnPage];
+                for (var k = 0; k < Menu[j].Length; k++)
+                {
+                    var index = (Menu[j].Length * j) + k;
+                    Menu[j][k] = index < items.Count ? items[index] : null;
+                }
             }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
         }
     }
 
@@ -81,5 +130,11 @@ public class MenuMaster
         }
 
         return list;
+    }
+
+    private void PageCheck(int page)
+    {
+        if (page > GetTotalPages() || page < 1)
+            throw new Exception("Указана неверная страница");
     }
 }

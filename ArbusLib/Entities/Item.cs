@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ArbusTest;
+﻿namespace ArbusTest;
 
 public class Item
 {
@@ -10,7 +8,7 @@ public class Item
 
     public decimal Price;
 
-    public Item(string name, Category category, decimal price)
+    public Item(string name,  decimal price, Category category = Category.None)
     {
         Name = name;
         Category = category;
@@ -23,5 +21,6 @@ public enum Category
     HotDrink,
     ColdDrink,
     Iceсream,
-    Alcohol
+    Alcohol,
+    None
 }
